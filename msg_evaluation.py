@@ -393,7 +393,7 @@ def limits_rows() -> list[tuple[str, str, str]]:
         ("Kein Rauschen, keine Störung, kein Verzug, kein Modellfehler", "Mit Stellgrenze und Störung oder Verzug nicht gemessen.",
          "[`plan-stoerung-demo`](https://github.com/sebastian-hanisch/plan-stoerung-demo), [`regelung-verzug-demo`](https://github.com/sebastian-hanisch/regelung-verzug-demo), [`offsetfrei-demo`](https://github.com/sebastian-hanisch/offsetfrei-demo)"),
         ("Horizont höchstens 20 in der App", zeile_rueck + ".", "–"),
-        ("Rechenzeit", "Nicht gemessen und nicht festgeschrieben; Warmstart und Vergleich mit Innere-Punkte-Verfahren oder ADMM kommen nicht vor.", "Linie Konvexe und konische Optimierung"),
+        ("Rechenzeit", "Nicht gemessen und nicht festgeschrieben; Warmstart und Vergleich mit Innere-Punkte-Verfahren oder ADMM kommen nicht vor.", "Thema Konvexe und konische Optimierung"),
     ]
 
 

@@ -3,16 +3,16 @@
 <!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
 **[→ Demo live ausprobieren](https://sebastianhanisch-mpc-stellgrenzen-demo.streamlit.app/)** -->
 
-Stück 5 der Linie **Regelung (von LQR bis MPC)** in der „Konzepte“-Reihe für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. Die Kante zu den Stücken 2
-([`lqr-riccati-demo`](https://github.com/sebastian-hanisch/lqr-riccati-demo)) und 3 ([`horizont-falle-demo`](https://github.com/sebastian-hanisch/horizont-falle-demo)) hebt eine Annahme auf: Das Gesetz u = −K x und der Satz „mit Endkosten aus der Riccati-Gleichung ist der Gewinn für jeden
+Diese Demo gehört zum Thema **Regelung (von LQR bis MPC)** auf der Website „Sebastian Hanisch – Operations Research und Machine Learning“. Sie baut auf
+[`lqr-riccati-demo`](https://github.com/sebastian-hanisch/lqr-riccati-demo) und [`horizont-falle-demo`](https://github.com/sebastian-hanisch/horizont-falle-demo) auf und hebt eine Annahme auf: Das Gesetz u = −K x und der Satz „mit Endkosten aus der Riccati-Gleichung ist der Gewinn für jeden
 Horizont derselbe wie der unendliche“ setzen eine **unbegrenzte Stellgröße** voraus. Hier gilt |u| ≤ u_max, und gefragt wird, was MPC als quadratisches Programm (QP) daraus macht. Vehikel ist der **Wagen**
-(Doppelintegrator, Ts = 1) und der Skalar x⁺ = x + u als Handbeispiel. Nachbarn der Linie: [`plan-stoerung-demo`](https://github.com/sebastian-hanisch/plan-stoerung-demo) (Plan und Störung),
+(Doppelintegrator, Ts = 1) und der Skalar x⁺ = x + u als Handbeispiel. Nachbarn zum Thema Regelung: [`plan-stoerung-demo`](https://github.com/sebastian-hanisch/plan-stoerung-demo) (Plan und Störung),
 [`lqr-reserven-demo`](https://github.com/sebastian-hanisch/lqr-reserven-demo) (Reserven), [`windup-pi-demo`](https://github.com/sebastian-hanisch/windup-pi-demo) (die Gegenfrage mit einem PI-Regler und Back-Calculation),
 [`mpc-zulaessigkeit-demo`](https://github.com/sebastian-hanisch/mpc-zulaessigkeit-demo) (Zustandsgrenzen, Zulässigkeit), [`offsetfrei-demo`](https://github.com/sebastian-hanisch/offsetfrei-demo) (Sollwert und Störung) und
 [`regelung-verzug-demo`](https://github.com/sebastian-hanisch/regelung-verzug-demo) (Rechenzeit als Verzug). Andere Stellen im Portfolio: [`lager-chaos-demo`](https://github.com/sebastian-hanisch/lager-chaos-demo) (dort macht die Klemmung u ≥ 0 eine
-lineare Lagerregel chaotisch; hier bleibt jede Bahn beschränkt und konvergiert, und das Lager ist nicht das Vehikel), [`rolling-horizon-demo`](https://github.com/sebastian-hanisch/rolling-horizon-demo) (rollierend planen mit anderem Modell),
-[`lager-lieferzeit-demo`](https://github.com/sebastian-hanisch/lager-lieferzeit-demo) und [`meldeverzug-demo`](https://github.com/sebastian-hanisch/meldeverzug-demo) (Schwesterlinie Rückkopplung).
-Andere QP-Löser (ADMM, Warmstart, Innere-Punkte-Verfahren) gehören zur Linie Konvexe und konische Optimierung; hier gibt es nur die Aktivmengen-Methode.
+lineare Lagerregel chaotisch; hier ist das Lager nicht das Vehikel, und am Doppelintegrator konvergiert das Abschneiden in allen gemessenen Fällen (B12), bei der offen instabilen Strecke dagegen nicht überall (B11)), [`rolling-horizon-demo`](https://github.com/sebastian-hanisch/rolling-horizon-demo) (rollierend planen mit anderem Modell),
+[`lager-lieferzeit-demo`](https://github.com/sebastian-hanisch/lager-lieferzeit-demo) und [`meldeverzug-demo`](https://github.com/sebastian-hanisch/meldeverzug-demo) (Rückkopplung im Lager, anderes Modell).
+Andere QP-Löser (ADMM, Warmstart, Innere-Punkte-Verfahren) gehören zum Thema Konvexe und konische Optimierung; hier gibt es nur die Aktivmengen-Methode.
 
 ## Warum dieses Problem
 
@@ -77,17 +77,17 @@ Iterationszahlen ± 20 %). Die Spalte „Test“ nennt die Funktion in `tests/te
 Die Sätze unter den Experimenten der App sind reine Funktionen (`msg_evaluation.verdict_*`), geprüft an handgesetzten Werten (`tests/test_verdicts.py`) und je Schnellstart-Knopf (`tests/test_claims.py::test_preset_*`): der Skalar-Knopf meldet keinen Vorteil von MPC,
 der Knopf „Zu kurzer Horizont ohne Endkosten“ meldet „teurer“.
 
-### Befunde und Korrekturen gegenüber dem Plan
+### Abweichungen gegenüber den ersten Überschlagsrechnungen
 
-- **Zufallsinstanzen neu gezogen.** Der Plan nannte für die Gegenprobe (B6) gleich in 240 / 206 / 206, billiger in 760 / 794 / 794 und größten Vorteil 69,1 / 75,3 / 80,4 %; für die großen Zufallsstarts (B12) Median 2 786 und höchstens 10 882 Takte, Überschwingen 11,2 und 90,2.
-  Im Bau kommen die Zufallszahlen aus dem SplitMix64 der Demo statt aus `numpy.random` (gleicher Zufalls-Seed 14, andere Instanzen): 232 / 193 / 193, 768 / 807 / 807, 72,7 / 74,9 / 88,2 % und Median 3 293, höchstens 11 326 Takte, 11,4 und 93,6. Die Aussagen bleiben (teurer in 0 von 1 000; Abschneiden konvergiert überall; starkes Überschwingen); die Zahlen sind die des Baus.
-- **Orakel-Abweichungen und Rückfallanteil verschoben.** Mit anderen Zufalls-QPs und relativen Toleranzen (zum Boxradius) sind die Abweichungen B14 etwas anders als in der Vormessung (zum Beispiel SLSQP gegen die Methode 5,6·10⁻⁸ statt 1,0·10⁻⁷) und der Rückfall bei a = 1,2, N = 40 liegt bei 20,5 % statt 20,7 % (B15).
-- **Die steuerbare Menge ist nicht immer das, was MPC N = 20 erreicht.** Der Plan nannte für a = 1,2: MPC N = 20 und 40 stimmen mit der steuerbaren Menge überein. Das gilt hier für a = 1,2 und a = 1,25; bei a = 1,15 verfehlt MPC mit N = 20 sechs von 616 steuerbaren Punkten (B11). Die Menge N = 40 wird in der App nicht gezeigt (Horizont höchstens 20).
-- **Gemessen, wo der Plan nur nannte (Plan Z5 c):** MPC bei sehr großen Zuständen (B12): alle 40 Starts konvergieren, Überschwingen höchstens das 64,4-Fache; MPC liegt an diesen Starts bei 16 bis 57 % der Kosten des Abschneidens. Das ist eine Stichprobe von 40 Starts, nicht das ganze Gebiet; die Zahlen schwanken von Ziehung zu Ziehung.
-- **Nicht gemacht (Plan Z5 b):** eine zweite Rechnung für die Referenz N = 60 am Doppelintegrator (zum Beispiel dynamische Programmierung über einem Zustandsgitter). Gestützt ist sie durch B9 (Voraussage gleich gefahren ab genügend großem N) und den Skalar (B2); für den Wagen bleibt sie eine Annahme.
+- **Zufallsinstanzen neu gezogen.** Eine erste Rechnung mit `numpy.random` ergab für die Gegenprobe (B6) gleich in 240 / 206 / 206, billiger in 760 / 794 / 794 und größten Vorteil 69,1 / 75,3 / 80,4 %; für die großen Zufallsstarts (B12) Median 2 786 und höchstens 10 882 Takte, Überschwingen 11,2 und 90,2.
+  In der Demo kommen die Zufallszahlen aus dem SplitMix64 statt aus `numpy.random` (gleicher Zufalls-Seed 14, andere Instanzen): 232 / 193 / 193, 768 / 807 / 807, 72,7 / 74,9 / 88,2 % und Median 3 293, höchstens 11 326 Takte, 11,4 und 93,6. Die Aussagen bleiben (teurer in 0 von 1 000; Abschneiden konvergiert überall; starkes Überschwingen); die Zahlen der Tabelle sind die der Demo.
+- **Orakel-Abweichungen und Rückfallanteil verschoben.** Mit anderen Zufalls-QPs und relativen Toleranzen (zum Boxradius) sind die Abweichungen B14 etwas anders als in der ersten Rechnung (zum Beispiel SLSQP gegen die Methode 5,6·10⁻⁸ statt 1,0·10⁻⁷) und der Rückfall bei a = 1,2, N = 40 liegt bei 20,5 % statt 20,7 % (B15).
+- **Die steuerbare Menge ist nicht immer das, was MPC N = 20 erreicht.** Eine erste Rechnung für a = 1,2 hatte MPC mit N = 20 und 40 als gleich der steuerbaren Menge gefunden. Das gilt für a = 1,2 und a = 1,25; bei a = 1,15 verfehlt MPC mit N = 20 sechs von 616 steuerbaren Punkten (B11). Die Menge N = 40 wird in der App nicht gezeigt (Horizont höchstens 20).
+- **MPC bei sehr großen Zuständen gemessen (B12):** alle 40 Starts konvergieren, Überschwingen höchstens das 64,4-Fache; MPC liegt an diesen Starts bei 16 bis 57 % der Kosten des Abschneidens. Das ist eine Stichprobe von 40 Starts, nicht das ganze Gebiet; die Zahlen schwanken von Ziehung zu Ziehung.
+- **Nicht gemacht:** eine zweite Rechnung für die Referenz N = 60 am Doppelintegrator (zum Beispiel dynamische Programmierung über einem Zustandsgitter). Gestützt ist sie durch B9 (Voraussage gleich gefahren ab genügend großem N) und den Skalar (B2); für den Wagen bleibt sie eine Annahme.
 - **Wortgebrauch.** „Abschneiden“ steht für beide Arten (siehe Modell); „Klemmung“ bleibt der Wortgebrauch der [`lager-chaos-demo`](https://github.com/sebastian-hanisch/lager-chaos-demo).
 - **Zielwert gegen Stellfolge bei N = 40.** In einer Stichprobe von 25 Zuständen (a = 1,2, N = 40, `tests/test_edge_cases.py`) stimmen die Zielwerte (Größenordnung 10⁹) von eigener Methode und `bvls` relativ auf 10⁻⁹ überein, die Stellfolgen können in flachen Richtungen der Zielfunktion um bis zu rund 0,35 abweichen (beim Bau beobachtet, die Zahl ist nicht im Test festgeschrieben). Ein weiterer Grund für die Grenze N ≤ 20 der App.
-- **Fehlstart aus der Vormessung** (in den Tests verankert): `lsq_linear` mit der Voreinstellung der Iterationszahl lieferte bei N = 20 / 30 / 60 einen bis zu 2,18 / 16,6 / 66,7 höheren Zielwert als die eigene Methode; mit `max_iter=100000` stimmt es auf 10⁻⁹ (`tests/test_oracle_mpc_stellgrenzen.py`). Toleranzen der Methode sind relativ zu wählen; die erste Fassung mit festem 10⁻¹² lief bei N = 60 in eine Endlosschleife.
+- **Fehlstart einer ersten Rechnung** (in den Tests verankert): `lsq_linear` mit der Voreinstellung der Iterationszahl lieferte bei N = 20 / 30 / 60 einen bis zu 2,18 / 16,6 / 66,7 höheren Zielwert als die eigene Methode; mit `max_iter=100000` stimmt es auf 10⁻⁹ (`tests/test_oracle_mpc_stellgrenzen.py`). Toleranzen der Methode sind relativ zu wählen; die erste Fassung mit festem 10⁻¹² lief bei N = 60 in eine Endlosschleife.
 
 ## Quellen
 
@@ -108,7 +108,7 @@ Die Gleichungen sind in eigener Herleitung geschrieben und gegen die direkt summ
 - **Die Referenz N = 60** ist kein bewiesener unendlicher Horizont (siehe oben).
 - **Kein Rauschen, keine Störung, kein Verzug, kein Modellfehler.** Mit Stellgrenze und Störung oder Verzug ist nichts gemessen ([`plan-stoerung-demo`](https://github.com/sebastian-hanisch/plan-stoerung-demo), [`regelung-verzug-demo`](https://github.com/sebastian-hanisch/regelung-verzug-demo), [`offsetfrei-demo`](https://github.com/sebastian-hanisch/offsetfrei-demo)).
 - **Horizont höchstens 20.** Darüber wird H schlecht konditioniert: bei a = 1,2 und N = 40 bricht die Methode in 20,5 % der Aufrufe ab (B15). Die dünne Form (Zustände als Variablen) wäre ein Ausweg und ist nicht umgesetzt.
-- **Rechenzeit ist nicht gemessen und nicht festgeschrieben;** Warmstart und der Vergleich mit Innere-Punkte-Verfahren oder ADMM kommen nicht vor (Linie Konvexe und konische Optimierung). Die Zahl der Iterationen (B13) ist ein Aufwandsmaß, kein Zeitmaß.
+- **Rechenzeit ist nicht gemessen und nicht festgeschrieben;** Warmstart und der Vergleich mit Innere-Punkte-Verfahren oder ADMM kommen nicht vor (Thema Konvexe und konische Optimierung). Die Zahl der Iterationen (B13) ist ein Aufwandsmaß, kein Zeitmaß.
 - **Gleichstände an Schwellen:** „gleich“ heißt relativ höchstens 10⁻⁹; zwischen 10⁻¹² und 10⁻⁶ liegt in den Messungen kein Punkt. Zählungen aus der Neu-Rechnung gelten unter Linux als Band (± 2).
 - **Warum im Skalar und bei N = 1 kein Unterschied entsteht und warum MPC mit Endkosten DARE nie teurer war, ist nicht erklärt**, nur gemessen. Der Satz „im Skalar gilt immer“ steht nirgends.
 
@@ -147,10 +147,10 @@ Die Gleichungen sind in eigener Herleitung geschrieben und gegen die direkt summ
 
 ## Bewusst nicht umgesetzt
 
-- **Zustandsgrenzen, Terminalmenge, rekursive Zulässigkeit** (eigenes Stück der Linie).
+- **Zustandsgrenzen, Terminalmenge, rekursive Zulässigkeit** (eigene Demo: [`mpc-zulaessigkeit-demo`](https://github.com/sebastian-hanisch/mpc-zulaessigkeit-demo)).
 - **ADMM, Warmstart, Innere-Punkte-Vergleich, explizites MPC** (Regionen eines expliziten Gesetzes werden nicht gezählt; die 37 / 77 / 81 Muster in B13 sind eine andere Zahl).
 - **Zufall in der App** (Gitter statt Stichproben; sonst hieße der Regler „Zufalls-Seed“).
-- **PDF-Export.** Die Schwesterstücke der Linie haben keinen, und die Ergebnisse sind Zählungen mit ihren Bedingungen, die in README und App stehen.
+- **PDF-Export.** Die Ergebnisse sind Zählungen mit ihren Bedingungen, die in README und App stehen.
 - **Ein PI-Regler mit Anti-Windup** (Gegenfrage in [`windup-pi-demo`](https://github.com/sebastian-hanisch/windup-pi-demo)).
 - **Der Horizont N = 40 in der App** (siehe Grenzen).
 
@@ -179,4 +179,4 @@ Gebaut mit Streamlit, Plotly, NumPy und SciPy.
 
 ---
 
-Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zu den Demos: [Interaktive Demos](https://sebastianhanisch.net/demos.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Regelung von LQR bis MPC: vom Plan zur Regel](https://sebastianhanisch.net/konzepte-regelung.html).

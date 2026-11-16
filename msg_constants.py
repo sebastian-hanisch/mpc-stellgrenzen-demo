@@ -33,7 +33,7 @@ EQUAL_REL = 1e-9                                          # Kosten gelten als gl
 REF_N = 60                                                # Referenz: MPC mit diesem Horizont und Endkosten DARE (kein bewiesener unendlicher Horizont)
 GRID_X1 = (-10.0, 10.0, 1.0)                              # Standardgitter der Wagen-Vergleiche: x1 von … bis … Schritt …
 GRID_X2 = (-4.0, 4.0, 0.5)                                # 21 × 17 − 1 = 356 Startzustände
-FIRSTU_X1 = (-10.0, 10.0, 0.5)                            # Gitter der Erststellsignal-Prüfung (Plan D5): 41 × 33 = 1 353 Punkte
+FIRSTU_X1 = (-10.0, 10.0, 0.5)                            # Gitter der Erststellsignal-Prüfung : 41 × 33 = 1 353 Punkte
 FIRSTU_X2 = (-4.0, 4.0, 0.25)
 SCALAR_GRID = (-12.0, 12.0, 0.01)                         # Skalar: 2 401 Punkte
 UNSTABLE_GRID = (-6.0, 6.0, 0.5)                          # Experiment 6: 25 × 25 − 1 = 624 Startzustände

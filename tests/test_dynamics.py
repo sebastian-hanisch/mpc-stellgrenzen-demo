@@ -17,7 +17,7 @@ def test_plants():
 
 
 def test_dare_gain_of_the_wagen_for_r_equal_one():
-    """V1 der Messung: K = (0,42208; 1,24393) für R = 1; geschlossene Eigenwerte 0,378 ± 0,188 i (Betrag 0,4224)."""
+    """Riccati-Gewinn: K = (0,42208; 1,24393) für R = 1; geschlossene Eigenwerte 0,378 ± 0,188 i (Betrag 0,4224)."""
     A, B, Q = D.plant("wagen")
     P, K = D.dare(A, B, Q, 1.0)
     assert K[0] == pytest.approx([0.42208, 1.24393], abs=5e-6)
