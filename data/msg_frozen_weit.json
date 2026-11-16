@@ -1,0 +1,38 @@
+{
+ "gitter": {
+  "1": {
+   "punkte": 440,
+   "nicht_konvergiert": 0,
+   "max_verhaeltnis": 30.500004553733724
+  },
+  "0.1": {
+   "punkte": 440,
+   "nicht_konvergiert": 0,
+   "max_verhaeltnis": 30.500004553733724
+  },
+  "0.01": {
+   "punkte": 440,
+   "nicht_konvergiert": 0,
+   "max_verhaeltnis": 30.500004553733724
+  }
+ },
+ "zufall": {
+  "starts": 500,
+  "nicht_konvergiert": 0,
+  "schritte_median": 3293.0,
+  "schritte_max": 11326,
+  "verhaeltnis_median": 11.412412182562381,
+  "verhaeltnis_max": 93.60123336304953
+ },
+ "mpc": {
+  "starts": 40,
+  "konvergiert": 40,
+  "schritte_median": 776.5,
+  "schritte_max": 2935,
+  "verhaeltnis_median": 14.428364755531293,
+  "verhaeltnis_max": 64.35775838762851,
+  "kosten_vs_clip_min": 0.1575638317902468,
+  "kosten_vs_clip_max": 0.5685789637599385,
+  "N": 10
+ }
+}

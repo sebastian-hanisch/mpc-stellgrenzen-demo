@@ -1,0 +1,29 @@
+{
+ "instanzen": 1000,
+ "clip_konvergiert": 1000,
+ "schritte": 3000,
+ "seed": 14,
+ "n": {
+  "2": {
+   "teurer": 0,
+   "gleich": 232,
+   "billiger": 768,
+   "vorteil_max_prozent": 72.68136503677965,
+   "nachteil_max_prozent": 0.0
+  },
+  "3": {
+   "teurer": 0,
+   "gleich": 193,
+   "billiger": 807,
+   "vorteil_max_prozent": 74.94460181659053,
+   "nachteil_max_prozent": 0.0
+  },
+  "5": {
+   "teurer": 0,
+   "gleich": 193,
+   "billiger": 807,
+   "vorteil_max_prozent": 88.17827822093584,
+   "nachteil_max_prozent": 0.0
+  }
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "zufalls_qps": {
+  "anzahl": 400,
+  "mit_aktiver_grenze": 376,
+  "abweichung": {
+   "Aufzählung": 3.4416913763379853e-15,
+   "bvls": 7.93809462606987e-15,
+   "SLSQP": 5.5548337332678166e-08
+  }
+ },
+ "mpc_qps": {
+  "anzahl": 240,
+  "abweichung": {
+   "Aufzählung": 2.5646151868841116e-14,
+   "bvls": 1.3100631690576847e-14,
+   "SLSQP": 2.5226310049752954e-06
+  }
+ },
+ "gross": {
+  "10": {
+   "cond": 1230.5899735966284,
+   "wert_ueberschuss_bvls": 2.7284841053187847e-12,
+   "wert_ueberschuss_slsqp": 9.001732905744575e-07,
+   "kkt_max": 4.547473508864641e-13,
+   "mit_aktiver_grenze": 25
+  },
+  "20": {
+   "cond": 14217.439553161941,
+   "wert_ueberschuss_bvls": 2.1827872842550278e-11,
+   "wert_ueberschuss_slsqp": 1.0749063221737742e-06,
+   "kkt_max": 3.637978807091713e-12,
+   "mit_aktiver_grenze": 29
+  },
+  "30": {
+   "cond": 64027.899148433666,
+   "wert_ueberschuss_bvls": 5.820766091346741e-11,
+   "wert_ueberschuss_slsqp": 4.748289939016104e-08,
+   "kkt_max": 1.4551915228366852e-11,
+   "mit_aktiver_grenze": 25
+  },
+  "60": {
+   "cond": 906945.2979759636,
+   "wert_ueberschuss_bvls": 4.656612873077393e-10,
+   "wert_ueberschuss_slsqp": 710505.8838976964,
+   "kkt_max": 1.7462298274040222e-10,
+   "mit_aktiver_grenze": 24
+  }
+ },
+ "gitter": {
+  "folgen": 68921,
+  "faelle": [
+   {
+    "x0": [
+     10.0,
+     0.0
+    ],
+    "abstand": 2.842170943040401e-14,
+    "nie_darunter": true
+   },
+   {
+    "x0": [
+     -6.0,
+     2.0
+    ],
+    "abstand": 0.003101246654757972,
+    "nie_darunter": true
+   },
+   {
+    "x0": [
+     1.0,
+     0.5
+    ],
+    "abstand": 0.00069907333755026,
+    "nie_darunter": true
+   }
+  ]
+ }
+}

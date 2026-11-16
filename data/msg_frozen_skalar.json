@@ -1,0 +1,151 @@
+{
+ "s3": {
+  "Q|1": {
+   "gewinn": 0.5,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 0.0
+  },
+  "Q|2": {
+   "gewinn": 0.6,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 1.1102230246251565e-16
+  },
+  "Q|3": {
+   "gewinn": 0.6153846153846153,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 3.3306690738754696e-16
+  },
+  "Q|4": {
+   "gewinn": 0.6176470588235294,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 3.3306690738754696e-16
+  },
+  "Q|5": {
+   "gewinn": 0.6179775280898877,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 4.440892098500626e-16
+  },
+  "Q|6": {
+   "gewinn": 0.6180257510729612,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 7.771561172376096e-16
+  },
+  "Q|7": {
+   "gewinn": 0.6180327868852459,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  },
+  "Q|8": {
+   "gewinn": 0.6180338134001252,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  },
+  "DARE|1": {
+   "gewinn": 0.6180339887498948,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 1.1102230246251565e-16
+  },
+  "DARE|2": {
+   "gewinn": 0.6180339887498949,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 2.220446049250313e-16
+  },
+  "DARE|3": {
+   "gewinn": 0.6180339887498949,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 3.3306690738754696e-16
+  },
+  "DARE|4": {
+   "gewinn": 0.618033988749895,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 4.440892098500626e-16
+  },
+  "DARE|5": {
+   "gewinn": 0.618033988749895,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  },
+  "DARE|6": {
+   "gewinn": 0.6180339887498948,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  },
+  "DARE|7": {
+   "gewinn": 0.6180339887498948,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  },
+  "DARE|8": {
+   "gewinn": 0.6180339887498951,
+   "punkte": 2401,
+   "abweichend": 0,
+   "groesste": 8.881784197001252e-16
+  }
+ },
+ "s3_versetzt": {
+  "Q|1": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 0.0
+  },
+  "Q|2": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 1.1102230246251565e-16
+  },
+  "Q|5": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 3.3306690738754696e-16
+  },
+  "Q|8": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 4.440892098500626e-16
+  },
+  "DARE|1": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 1.1102230246251565e-16
+  },
+  "DARE|2": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 2.220446049250313e-16
+  },
+  "DARE|5": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 3.3306690738754696e-16
+  },
+  "DARE|8": {
+   "punkte": 1847,
+   "abweichend": 0,
+   "groesste": 5.551115123125783e-16
+  }
+ },
+ "s4": {
+  "mpc_n2": 197.3095238095238,
+  "clip": 197.30901699437496,
+  "mpc_n40": 197.30901699437496,
+  "dp_gitter": 197.30903750020863,
+  "dp_schritt": 0.005,
+  "dp_sweeps": 21,
+  "gewinn_dare": 0.6180339887498948
+ }
+}
