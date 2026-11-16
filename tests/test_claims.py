@@ -90,6 +90,13 @@ def test_b5_cost_counts_n10_live_band(r, um, billiger, gleich):
     assert abs(c["billiger"] - billiger) <= 2 and abs(c["gleich"] - gleich) <= 2 and c["teurer"] == 0 and c["verglichen"] == 356
 
 
+@pytest.mark.parametrize("n, r, um, billiger", [(2, 1.0, 1.0, 142), (2, 1.0, 2.0, 0), (2, 10.0, 1.0, 0), (2, 10.0, 0.75, 30), (10, 1.0, 2.0, 0), (10, 10.0, 1.0, 0), (10, 10.0, 0.75, 30)])
+def test_b5_better_than_clipping_needs_an_active_bound_on_the_grid(n, r, um, billiger):
+    """B5: „ab N = 2 billiger“ gilt nur, wenn die Grenze auf dem Gitter greift: u_max = 1, R = 1: 142 bei N = 2; u_max = 2 (R = 1) und R = 10 mit u_max = 1: 0 von 356; R = 10, u_max = 0,75: 30 (neu gerechnet, Band ± 2)."""
+    c = ev.wagen_counts(ev.wagen_grid(ev.Settings(n=n, umax=um, r=r)))
+    assert abs(c["billiger"] - billiger) <= 2 and c["teurer"] == 0 and c["verglichen"] == 356
+
+
 def test_b5_threshold_does_not_decide_the_count():
     """B5: zwischen relativ 1e-12 und 1e-6 liegt kein Punkt; der kleinste Unterschied darüber ist 2,5·10⁻⁶ (u_max = 1) bzw. 1,8·10⁻⁵ (u_max = 0,5); (vorgerechnet)."""
     sw = FZ["d1"]["schwelle"]
@@ -211,7 +218,7 @@ def test_b10_without_endcost_frozen_and_live():
 
 def test_b4_first_gain_and_first_stellsignal():
     """B4: Mit Endkosten DARE ist der unbeschränkte erste Gewinn für N = 1 bis 10 gleich K (größte Abweichung 5,6·10⁻¹⁵ bei R = 1, 2,1·10⁻¹⁴ bei R = 0,1, vorgerechnet); mit P = Q nicht (0,74 bei N = 1,
-    0,24 bei N = 2). Im Inneren (N = 10, u_max = 1) liefert das QP −Kx an 157 von 325 Gitterpunkten; das erste Stellsignal weicht von clip(−Kx) an 88 von 1 353 Gitterpunkten ab, größte Abweichung 0,307."""
+    0,24 bei N = 2). Im Fenster x₁ ∈ [−3, 3], x₂ ∈ [−1,5; 1,5] (N = 10, u_max = 1; 325 Gitterpunkte) liefert das QP −Kx an 157 von 325 Gitterpunkten; das erste Stellsignal weicht von clip(−Kx) an 88 von 1 353 Gitterpunkten ab, größte Abweichung 0,307."""
     k = FZ["kurz"]
     assert k["d4"]["1.0"]["dare_max"] < 1e-12 and k["d4"]["0.1"]["dare_max"] < 1e-12
     assert k["d4"]["1.0"]["q"]["1"] == pytest.approx(0.7439, abs=5e-4) and k["d4"]["1.0"]["q"]["2"] == pytest.approx(0.2439, abs=5e-4)

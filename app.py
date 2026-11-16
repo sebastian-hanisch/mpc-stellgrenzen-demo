@@ -93,7 +93,7 @@ st.markdown(
     """
 Das Gesetz **u = −K x** der Riccati-Gleichung setzt eine **unbegrenzte Stellgröße** voraus. Am Wagen (Doppelintegrator) aus dem Startzustand (10; 0) verlangt es u = −4,22, die Grenze ist 1.
 Mit Grenze löst **MPC** in jedem Takt ein **quadratisches Programm (QP) mit Boxgrenzen** und wendet das erste Stellsignal an; die Gegenspielerin ist **„LQR, dann abschneiden“**
-(u = clip(−K x)). Die Demo fragt, wo das QP etwas kann, was das Abschneiden nicht kann, und wo nicht: im Skalar und bei Horizont 1 gar nicht, am Wagen ab Horizont 2.
+(u = clip(−K x)). Die Demo fragt, wo das QP etwas kann, was das Abschneiden nicht kann, und wo nicht: im Skalar und bei Horizont 1 gar nicht, am Wagen ab Horizont 2, sofern die Grenze auf dem Gitter greift (u_max = 1, R = 1: bei N = 2 in 142 von 356 Startzuständen).
 
 Weiter unten: sechs **🔬 Experimente**, **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**. Alle Zahlen gelten in diesem Modell, bei den eingestellten Parametern.
 """

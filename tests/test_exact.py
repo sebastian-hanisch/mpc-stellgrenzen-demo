@@ -31,7 +31,7 @@ def test_scalar_h_inverse_and_unconstrained_minimizer():
 @pytest.mark.parametrize("x, u, v", [(Fr(1), (Fr(-3, 5), Fr(-1, 5)), Fr(4, 5)), (Fr(2), (Fr(-1), Fr(-1, 2)), Fr(13, 4)), (Fr(3), (Fr(-1), Fr(-1)), Fr(8)),
                                       (Fr(10), (Fr(-1), Fr(-1)), Fr(247, 2)), (Fr(5, 3), (Fr(-1), Fr(-1, 3)), Fr(20, 9)), (Fr(-2), (Fr(1), Fr(1, 2)), Fr(13, 4))])
 def test_scalar_qp_values_by_hand(x, u, v):
-    """V(1) = 4/5, V(2) = 13/4, V(3) = 8, V(10) = 247/2 = 123,5 (die Quelle nennt gerundet 124: ½(100 + 1 + 81 + 1 + 64))."""
+    """V(1) = 4/5, V(2) = 13/4, V(3) = 8, V(10) = 247/2 = 123,5 (die Quelle nennt nach Quellenbericht 124, im Original nicht gelesen; ½(100 + 1 + 81 + 1 + 64))."""
     uu, vv, _ = E.scalar_n2(x)
     assert tuple(uu) == u and vv == v
 
