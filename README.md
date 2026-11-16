@@ -1,7 +1,6 @@
 # Stellgrenzen: MPC als quadratisches Programm – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-mpc-stellgrenzen-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-mpc-stellgrenzen-demo.streamlit.app/)**
 
 Diese Demo gehört zum Thema **Regelung (von LQR bis MPC)** auf der Website „Sebastian Hanisch – Operations Research und Machine Learning“. Sie baut auf
 [`lqr-riccati-demo`](https://github.com/sebastian-hanisch/lqr-riccati-demo) und [`horizont-falle-demo`](https://github.com/sebastian-hanisch/horizont-falle-demo) auf und hebt eine Annahme auf: Das Gesetz u = −K x und der Satz „mit Endkosten aus der Riccati-Gleichung ist der Gewinn für jeden
